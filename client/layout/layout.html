@@ -1,0 +1,52 @@
+<template name="layout">
+  <div class="container">
+    <h1 class="header center-align">AppCatalyst UI</h1>
+
+    <div class="row">
+      <form class="col s12 new_vm">
+        <div class="row">
+          <div class="input-field col s4 offset-s4">
+            <input id="vm_name" name="vm_name" type="text" class="validate">
+            <label for="vm_name">name</label>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    {{#each vms}}
+    {{> vm}}
+    {{/each}}
+
+  </div>
+</template>
+
+<template name="vm">
+  <div class="row">
+    <div class="col s6 offset-s3">
+      {{#if poweredOn}}
+      <div class="card green lighten-2">
+        <div class="card-content white-text">
+          <span class="card-title">{{name}} - {{ip}}</span>
+          <p></p>
+        </div>
+        <hr/>
+        <div class="card-action">
+          <a class="waves-effect waves-light btn white black-text"><i class="mdi mdi-action-thumb-down left"></i>power off</a>
+        </div>
+      </div>
+      {{else}}
+      <div class="card blue lighten-2">
+        <div class="card-content white-text">
+          <span class="card-title">{{name}}</span>
+          <p></p>
+        </div>
+        <hr/>
+        <div class="card-action">
+          <a class="waves-effect waves-light btn white black-text"><i class="mdi mdi-action-thumb-up left"></i>power on</a>
+          <a class="waves-effect waves-light btn white red-text delete" ><i class="mdi mdi-action-delete left"></i>delete</a>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+</template>
