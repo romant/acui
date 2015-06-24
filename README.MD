@@ -14,6 +14,10 @@ This is an un-official, first stab at making an interface for interacting with, 
 
 - Everything else
 
+## How to get it running
+1. Install [Meteor](https://www.meteor.com/)
+1. Clone the repo, and run `meteor` within the directory.
+
 ## Next Steps
 
 - Gain parity with the existing API feature-set
