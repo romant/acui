@@ -2,7 +2,7 @@ var vms = [];
 
 function reinit()
 {
-  vms=[];
+  vms = [];
   Meteor.call('listEnvironments', function (err, result)
   {
     if (err)
@@ -61,14 +61,6 @@ Template.layout.helpers(
   }
 });
 
-Template.vm.helpers(
-{
-  poweredOn: function ()
-  {
-    return this.power === "powered on";
-  }
-});
-
 Template.layout.events(
 {
   'click .delete': function (e)
@@ -93,4 +85,28 @@ Template.layout.events(
     return false;
   }
 
+});
+
+Template.vm.helpers(
+{
+  poweredOn: function ()
+  {
+    return this.power === "powered on";
+  }
+});
+
+Template.vm.events(
+{
+  'click #powerToggle_On': function (e)
+  {
+    console.dir(this);
+    Materialize.toast('Powering On => ' + this.name, 4000);
+    Meteor.call('powerToggle', this.name, 'on');
+  },
+  'click #powerToggle_Off': function (e)
+  {
+    console.dir(this);
+    Materialize.toast('Powering Off => ' + this.name, 4000);
+    Meteor.call('powerToggle', this.name, 'off');
+  }
 });

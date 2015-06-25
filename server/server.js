@@ -26,13 +26,9 @@ Meteor.methods(
   {
     return Meteor.http.call('GET', 'http://localhost:8080/api/vms/power/' + vm)
   },
-  'powerOn': function (vm)
+  'powerToggle': function (vm, state)
   {
-    return Meteor.http.call('PATCH', 'http://localhost:8080/api/vms/power/' + vm, "{op:on}")
-  },
-  'powerOff': function (vm)
-  {
-    return Meteor.http.call('PATCH', 'http://localhost:8080/api/vms/power/' + vm)
+    return Meteor.http.call('PATCH', 'http://localhost:8080/api/vms/power/' + vm, state)
   },
   'ipaddress': function (vm)
   {
