@@ -97,16 +97,16 @@ Template.vm.helpers(
 
 Template.vm.events(
 {
-  'click #powerToggle_On': function (e)
+  'click #powerToggle': function (e)
   {
-    console.dir(this);
-    Materialize.toast('Powering On => ' + this.name, 4000);
-    Meteor.call('powerToggle', this.name, 'on');
-  },
-  'click #powerToggle_Off': function (e)
-  {
-    console.dir(this);
-    Materialize.toast('Powering Off => ' + this.name, 4000);
-    Meteor.call('powerToggle', this.name, 'off');
+    var action = e.target.name;
+
+    Materialize.toast('Powering => ' + this.name, 4000);
+    Meteor.call('powerToggle', this.name, action);
+
+    setTimeout(function ()
+    {
+      reinit();
+    }, 3000);
   }
 });
